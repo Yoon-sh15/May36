@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title>사진 시작/멈춤</title>
+    <style>
+        body {
+            text-align: center;
+            font-family: sans-serif;
+            margin-top: 50px;
+        }
+        img {
+            width: 300px;
+            border-radius: 10px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+        }
+        button {
+            margin: 20px 10px;
+            padding: 10px 20px;
+            font-size: 16px;
+        }
+    </style>
+</head>
+<body>
+    <h1>움직이는 사진</h1>
+    <img id="photo" src="30.png" alt="사진"><br>
+    <button onclick="start()">시작</button>
+    <button onclick="stop()">멈춤</button>
+
+    <script>
+        let step = 1;
+        let timer = null;
+
+        function changePhoto() {
+            const img = document.getElementById('photo');
+            if (step === 1) {
+                img.src = '30.png';
+                step = 2;
+            } else {
+                img.src = '31.png';
+                step = 1;
+            }
+        }
+
+        function start() {
+            if (!timer) {
+                timer = setInterval(changePhoto, 1000);
+            }
+        }
+
+        function stop() {
+            clearInterval(timer);
+            timer = null;
+        }
+    </script>
+</body>
+</html>
